@@ -10,7 +10,8 @@ var exec = require('child_process').exec;
 //########################################################################################################################################3
 var github = require('octonode');
 var inquirer = require('inquirer');
-//var client = github.client();
+//
+var client = github.client();
 // var ghme = client.me();
 
 
@@ -53,7 +54,7 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
               var ghme = client.me();
 
               ghme.repo({
-                "name": "Primer-repo-generando-token",
+                "name": "Primer-repo-generando-con-token",
                 "description": "This is your first repo",
               }, function (err, body) {//
                 if(err)
@@ -84,7 +85,7 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
 
             github.auth.config({username: name, password: pass}).login({
              scopes: ['user', 'repo','gist'],
-             note: 'Generando TOKEN'}, function (err, id, token) {//GENERAMOS TOKEN
+             note: 'Generando TOKEN NoeJaco17'}, function (err, id, token) {//GENERAMOS TOKEN
              console.log("MOSTRAMOS ID: "+id);
              console.log("MOSTRAMOS TOKEN: " + token);
              console.log("ERROR: "+err);
@@ -99,10 +100,9 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
                      ghme.repo({
                        "name": "Primer-repo-generando-con-token",
                        "description": "This is your first repo generated with token",
-                     }, function (err, body) {//
+                     }, function (err, body,headers) {//
                        if(err)
                             console.log(err);
-                            console.log("MOSTRAMOS BODY: " + body);
                      });
             });
            });
