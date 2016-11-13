@@ -86,6 +86,7 @@
     "minimatch": "^3.0.3",
     "minimist": "^1.2.0",
     "path": "^0.12.7",
+    "simple-git": "^1.62.0",
     "ssh-exec": "^2.0.0",
     "underscore": "^1.8.3"
   },

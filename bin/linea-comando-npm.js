@@ -10,6 +10,8 @@ var exec = require('child_process').exec;
 //########################################################################################################################################3
 var github = require('octonode');
 var inquirer = require('inquirer');
+
+
 //
 var client = github.client();
 // var ghme = client.me();
@@ -62,6 +64,13 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
                      console.log("MOSTRAMOS BODY: " + body);
               });
           });
+
+          require('simple-git')(process.cwd())
+         .init()
+         .add('./*')
+         .commit("first commit!")
+         .addRemote('origin', 'master')
+         .push('origin', 'master');
 
 
 }else{

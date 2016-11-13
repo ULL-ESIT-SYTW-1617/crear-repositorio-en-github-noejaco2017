@@ -18,7 +18,7 @@ El objetivo de esta práctica es extender el package NodeJS publicado en npm en 
 # Instalacion crear repo:
 
 Para ello lo unico que debemos hacer es instalar el paquete gitbook-start-team-noejaco2017-3.0 y aplicar el comando gitbook-start, ello ya nos creara el respositorio en github,
-Recuerde que debe de estar logeado anteriormente en github, para la generacion del token
+Recuerde que debe de estar logeado anteriormente en github, para la generacion del token.
 
 
 # Instalacion plugin heroku
