@@ -69,7 +69,7 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
          .init()
          .add('./*')
          .commit("first commit!")
-         .addRemote('origin', 'master')
+         .addRemote('origin', 'https://github.com/alu0100622492/Primer-repo-generando-con-token')
          .push('origin', 'master');
 
 
@@ -115,6 +115,14 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
                      });
             });
            });
+
+
+           require('simple-git')(process.cwd())
+          .init()
+          .add('./*')
+          .commit("first commit!")
+          .addRemote('origin', 'https://github.com/alu0100622492/Primer-repo-generando-con-token')
+          .push('origin', 'master');
 
 }
 
