@@ -64,25 +64,20 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
                      console.log(err);
                      //console.log("MOSTRAMOS BODY: " + body);
                      console.log("REPO CREADO SATISFACTORIAMENTE");
-              });
-            });
+
             console.log("OBTENIENDO REPOS");
-            require('simple-git')()
-              .listRemote(['--get-url'], function(err, data) {
-                    if (!err) {
-                        console.log('Remote url for repository at ' + __dirname + ':');
-                        console.log(data);
-                    }
-                        console.log("EMPUJANDO REPOS");
-                      require('simple-git')(process.cwd())
-                     .init()
-                     .add('./*')
-                     .commit("first commit!")
-                     .addRemote('origin', data)
-                     .push('origin', 'master');
+            client.get('/user', {}, function(err, status, body, headers) {
+                console.log("Usuario: " + body.login);
+                require('simple-git')()
+                    .init()
+                    .addRemote('origin-token', 'git@github.com:' + body.login + '/' + 'Primer-repo-generando-con-token.git')
+                 .add('./*')
+                 .commit("first commit!")
+                 .push('origin-token', 'master');
+            });
+
           });
-
-
+        });
 
 }else{
          console.log("NO EXISTE LO CREAMOS");
@@ -125,23 +120,20 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
                             console.log(err);
                             console.log("REPO CREADO SATISFACTORIAMENTE");
                      });
-              });
-           });
 
-           require('simple-git')()
-                .listRemote(['--get-url'], function(err, data) {
-                    if (!err) {
-                        console.log('Remote url for repository at ' + __dirname + ':');
-                        console.log("URL"+data);
-                    }
+                     client.get('/user', {}, function(err, status, body, headers) {
+                         console.log("Usuario: " + body.login);
+                         require('simple-git')()
+                             .init()
+                             .addRemote('origin-token', 'git@github.com:' + body.login + '/' + 'Primer-repo-generando-con-token.git')
+                          .add('./*')
+                          .commit("first commit!")
+                          .push('origin-token', 'master');
+                     });
+         });
+      });
 
-                     require('simple-git')(process.cwd())
-                    .init()
-                    .add('./*')
-                    .commit("first commit!")
-                    .addRemote('origin-token', data)
-                    .push('origin-token', 'master');
-                });
+
           //
 
 
