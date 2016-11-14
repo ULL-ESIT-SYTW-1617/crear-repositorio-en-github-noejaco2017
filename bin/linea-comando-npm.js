@@ -10,7 +10,8 @@ var exec = require('child_process').exec;
 //########################################################################################################################################3
 var github = require('octonode');
 var inquirer = require('inquirer');
-
+//var org = github.Organization('bulletjs');
+//var org = github.Organization('bulletjs');
 
 //
 var client = github.client();
@@ -41,7 +42,7 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
          var file = path.join(process.env.HOME, './.gitbook-start/config.json');//
          console.log("FICHERO: "+file);
 
-         var prueba = "";
+
          fs.readFile(file,"utf-8", function (err, token){
               if (err) throw err;
               console.log("VALOR DL FICHERO: "+token);
@@ -54,23 +55,33 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
               client = github.client(token);
 
               var ghme = client.me();
-
+              console.log("CREAMOS EL REPO");
               ghme.repo({
                 "name": "Primer-repo-generando-con-token",
                 "description": "This is your first repo",
               }, function (err, body) {//
                 if(err)
                      console.log(err);
-                     console.log("MOSTRAMOS BODY: " + body);
+                     //console.log("MOSTRAMOS BODY: " + body);
+                     console.log("REPO CREADO SATISFACTORIAMENTE");
               });
+            });
+            console.log("OBTENIENDO REPOS");
+            require('simple-git')()
+              .listRemote(['--get-url'], function(err, data) {
+                    if (!err) {
+                        console.log('Remote url for repository at ' + __dirname + ':');
+                        console.log(data);
+                    }
+                        console.log("EMPUJANDO REPOS");
+                      require('simple-git')(process.cwd())
+                     .init()
+                     .add('./*')
+                     .commit("first commit!")
+                     .addRemote('origin', __dirname)
+                     .push('origin', 'master');
           });
 
-          require('simple-git')(process.cwd())
-         .init()
-         .add('./*')
-         .commit("first commit!")
-         .addRemote('origin', 'https://github.com/alu0100622492/Primer-repo-generando-con-token')
-         .push('origin', 'master');
 
 
 }else{
@@ -105,24 +116,32 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
 
                var client = github.client(token);
                var ghme = client.me();
-
+               console.log("CREAMOS EL REPO");
                      ghme.repo({
                        "name": "Primer-repo-generando-con-token",
                        "description": "This is your first repo generated with token",
                      }, function (err, body,headers) {//
                        if(err)
                             console.log(err);
+                            console.log("REPO CREADO SATISFACTORIAMENTE");
                      });
-            });
+              });
            });
 
-
-           require('simple-git')(process.cwd())
-          .init()
-          .add('./*')
-          .commit("first commit!")
-          .addRemote('origin', 'https://github.com/alu0100622492/Primer-repo-generando-con-token')
-          .push('origin', 'master');
+           require('simple-git')()
+                .listRemote(['--get-url'], function(err, data) {
+                    if (!err) {
+                        console.log('Remote url for repository at ' + __dirname + ':');
+                        console.log(data);
+                    }
+                });
+          //
+          //  require('simple-git')(process.cwd())
+          // .init()
+          // .add('./*')
+          // .commit("first commit!")
+          // .addRemote('origin', 'https://github.com/alu0100622492/Primer-repo-generando-con-token')
+          // .push('origin', 'master');
 
 }
 
