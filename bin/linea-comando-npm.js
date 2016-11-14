@@ -132,7 +132,7 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
                 .listRemote(['--get-url'], function(err, data) {
                     if (!err) {
                         console.log('Remote url for repository at ' + __dirname + ':');
-                        console.log(data);
+                        console.log("URL"+data);
                     }
 
                      require('simple-git')(process.cwd())
