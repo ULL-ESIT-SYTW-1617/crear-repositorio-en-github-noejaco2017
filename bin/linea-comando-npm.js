@@ -134,14 +134,16 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
                         console.log('Remote url for repository at ' + __dirname + ':');
                         console.log(data);
                     }
+
+                     require('simple-git')(process.cwd())
+                    .init()
+                    .add('./*')
+                    .commit("first commit!")
+                    .addRemote('origin', __dirname)
+                    .push('origin', 'master');
                 });
           //
-          //  require('simple-git')(process.cwd())
-          // .init()
-          // .add('./*')
-          // .commit("first commit!")
-          // .addRemote('origin', 'https://github.com/alu0100622492/Primer-repo-generando-con-token')
-          // .push('origin', 'master');
+
 
 }
 
