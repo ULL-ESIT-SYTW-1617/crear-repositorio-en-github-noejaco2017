@@ -78,7 +78,7 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
                      .init()
                      .add('./*')
                      .commit("first commit!")
-                     .addRemote('origin', __dirname)
+                     .addRemote('origin', data)
                      .push('origin', 'master');
           });
 
@@ -139,7 +139,7 @@ if(fs.existsSync(path.join(process.env.HOME, './.gitbook-start/config.json'))){
                     .init()
                     .add('./*')
                     .commit("first commit!")
-                    .addRemote('origin-token', __dirname)
+                    .addRemote('origin-token', data)
                     .push('origin-token', 'master');
                 });
           //
