@@ -19,6 +19,7 @@ El objetivo de esta práctica es extender el package NodeJS publicado en npm en 
 
 Para ello lo unico que debemos hacer es instalar el paquete gitbook-start-team-noejaco2017-3.0 y aplicar el comando gitbook-start, ello ya nos creara el respositorio en github,
 Recuerde que debe de estar logeado anteriormente en github, para la generacion del token.
+ATENCION : DEBE TENER GENERADO ANTERIORMENTE LOS DIRECTORIOS DE SU PRACTICA(Ya que el comando ha sido desarrollado sin minimist)DIsulpen las molestias(En proximas practicas los introduciremos)
 
 
 # Instalacion plugin heroku
